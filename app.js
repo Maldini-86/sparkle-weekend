@@ -29,6 +29,28 @@ const 지시 = [
   });
 })();
 
+/* ── 발송일 계산 ──
+   매주 금요일 발송. 목요일 밤 12시까지 신청하면 이번 주말에 쓸 수 있다.
+   금·토·일에 신청하면 이번 주말은 이미 시작됐으므로 다음 주 금요일. */
+function nextSendDate() {
+  const now = new Date();
+  const d = now.getDay();                 // 0=일 … 6=토
+  const add = (d >= 1 && d <= 4) ? (5 - d) : (d === 5 ? 7 : d === 6 ? 6 : 5);
+  const send = new Date(now.getFullYear(), now.getMonth(), now.getDate() + add);
+  return send;
+}
+
+function fmtDate(dt) {
+  return `${dt.getMonth() + 1}월 ${dt.getDate()}일(금)`;
+}
+
+(function showDeadline() {
+  const send = nextSendDate();
+  const due = new Date(send.getFullYear(), send.getMonth(), send.getDate() - 1);
+  const text = `이번 주 신청 마감 — ${due.getMonth() + 1}월 ${due.getDate()}일(목) 밤 12시`;
+  document.querySelectorAll('[data-deadline]').forEach(el => { el.textContent = text; });
+})();
+
 /* ── 제출 ── */
 const form = document.getElementById('signupForm');
 const errBox = document.getElementById('err');
@@ -111,6 +133,7 @@ form.addEventListener('submit', async (e) => {
 /* ── 완료 화면 ── */
 function done(email) {
   document.getElementById('doneMail').textContent = email;
+  document.getElementById('doneWhen').textContent = fmtDate(nextSendDate());
   document.getElementById('done').hidden = false;
   document.body.style.overflow = 'hidden';
   window.scrollTo(0, 0);
