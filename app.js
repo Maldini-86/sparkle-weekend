@@ -8,17 +8,25 @@
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzAyhaylNSLnfOXhyxMoMmaB8UGkap4Ak8HoBa8Fz7mFjdW4W9Mo-Y9VGIlP-ec9BGx/exec';
 
-/* ── 출생 시각 드롭다운 채우기 ── */
+/* ── 출생 시각 = 12지시 ──
+   사주는 시(時)를 두 시간 단위 12지지로 봅니다.
+   지지 이름만으로는 모르는 분이 많아 시간대를 같이 보여줍니다. */
+const 지시 = [
+  ['자시', '23:00~01:00'], ['축시', '01:00~03:00'], ['인시', '03:00~05:00'],
+  ['묘시', '05:00~07:00'], ['진시', '07:00~09:00'], ['사시', '09:00~11:00'],
+  ['오시', '11:00~13:00'], ['미시', '13:00~15:00'], ['신시', '15:00~17:00'],
+  ['유시', '17:00~19:00'], ['술시', '19:00~21:00'], ['해시', '21:00~23:00']
+];
+
 (function fillTimes() {
   const sel = document.querySelector('select[name=birthTime]');
   if (!sel) return;
-  for (let h = 0; h < 24; h++) {
+  지시.forEach(([name, range]) => {
     const opt = document.createElement('option');
-    opt.value = String(h).padStart(2, '0');
-    const label = h === 0 ? '밤 12시' : h < 12 ? `오전 ${h}시` : h === 12 ? '낮 12시' : `오후 ${h - 12}시`;
-    opt.textContent = `${label}  (${String(h).padStart(2, '0')}시)`;
+    opt.value = name;
+    opt.textContent = `${name} (${range})`;
     sel.appendChild(opt);
-  }
+  });
 })();
 
 /* ── 제출 ── */
