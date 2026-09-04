@@ -73,7 +73,9 @@ form.addEventListener('submit', async (e) => {
   const fd = new FormData(form);
   const email = (fd.get('email') || '').trim();
   const birth = fd.get('birth') || '';
-  const consent = fd.get('consent') === 'on';
+  const agreeTerms = fd.get('agreeTerms') === 'on';
+  const agreePrivacy = fd.get('agreePrivacy') === 'on';
+  const agreeMarketing = fd.get('agreeMarketing') === 'on';   /* 선택 */
 
   /* 검증 */
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -92,8 +94,11 @@ form.addEventListener('submit', async (e) => {
   if (bd < eightYearsAgo) {
     return showErr('미취학(0~7세) 아이 대상이에요. 생년월일을 확인해주세요.');
   }
-  if (!consent) {
-    return showErr('수신동의를 해주셔야 리포트를 보내드릴 수 있어요.');
+  if (!agreeTerms) {
+    return showErr('서비스 이용약관에 동의해주셔야 신청할 수 있어요.');
+  }
+  if (!agreePrivacy) {
+    return showErr('개인정보 수집·이용에 동의해주셔야 리포트를 보내드릴 수 있어요.');
   }
 
   /* 전송 */
@@ -106,7 +111,9 @@ form.addEventListener('submit', async (e) => {
     birth,
     birthTime: fd.get('birthTime') || '',
     nickname: (fd.get('nickname') || '').trim(),
-    consent: true
+    agreeTerms: true,
+    agreePrivacy: true,
+    agreeMarketing: agreeMarketing
   };
 
   try {

@@ -9,7 +9,8 @@ const SHEETS = {
   signup: {
     name: '신청',
     headers: [
-      '신청일시', '이메일', '생년월일', '출생시각', '애칭', '수신동의',
+      '신청일시', '이메일', '생년월일', '출생시각', '애칭',
+      '약관동의', '개인정보동의', '광고성동의',
       '리포트초안', '검수', '발송일', '첫회차초대'
     ]
   },
@@ -34,7 +35,9 @@ function doPost(e) {
         data.birth || '',
         data.birthTime || '',
         data.nickname || '',
-        data.consent ? 'Y' : 'N',
+        data.agreeTerms ? 'Y' : 'N',
+        data.agreePrivacy ? 'Y' : 'N',
+        data.agreeMarketing ? 'Y' : 'N',
         '', '', '', ''            // 리포트초안 · 검수 · 발송일 · 첫회차초대 (수기)
       ];
     } else {

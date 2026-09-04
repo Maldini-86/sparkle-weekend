@@ -54,7 +54,9 @@
 
       <p>벤치에서 폰을 보는 게 게을러서가 아니라는 걸 압니다. <b>뭘 해야 할지 모르기 때문입니다.</b> 저도 그랬으니까요.</p>
 
-      <p>그래서 <b>두 시간을 통째로 설계해 둡니다.</b> 아이 옆에 앉아 계시기만 하면 됩니다. 뭘 할지는 저희가 정해놓을게요. <b>맡기고 나오는 자리가 아니라, 같이 있어도 어색하지 않은 자리</b>를 만드는 게 목적입니다.</p>
+      <p>그래서 <b>하루를 통째로 설계해 둡니다.</b> 진짜 그 일을 하는 사람과 보내는 <b>한 시간</b>, 그리고 근처에서 이어갈 산책이나 짧은 여정까지요. 아이 집중력은 한 시간이면 충분하거든요. 나머지는 아이랑 걸으면서 그 시간에 대해 이야기하는 데 씁니다.</p>
+
+      <p><b>아빠가 할 일도 정해놓습니다.</b> 아이 옆에서 무엇을 봐야 하는지, 어떤 순간에 뭐라고 물어야 하는지요. 만들거나 가르치실 필요는 없어요. <b>맡기고 나오는 자리가 아니라, 아이 눈이 반짝이는 순간을 아빠가 알아보는 자리</b>를 만드는 게 목적입니다.</p>
 
       <p>저는 제가 뭘 좋아하는지 모른 채로 어른이 됐습니다. 수학 학원, 영어 학원은 다녔는데요. <b>우리 애는 안 그랬으면 해서</b> 이걸 만듭니다.</p>
 
@@ -77,14 +79,16 @@
         <p>아이가 몰입했을 때 나오는 신호 네 가지. <b>이번 주말에 바로 쓰실 수 있습니다.</b></p>
       </li>
       <li>
-        <span class="when">매주 금요일 · 메일로</span>
-        <h3>아이 기질 리포트 + 이번 주말 활동 제안</h3>
-        <p>타고난 결을 읽고, <b>그래서 뭘 해보면 좋을지</b>까지 적어 보내드립니다. <b>목요일 밤 12시까지 신청하시면 이번 주말에 쓰실 수 있어요.</b></p>
+        <span class="when">첫 금요일 · 메일로</span>
+        <h3>아이 기질 리포트 + 이번 주말에 해볼 것 하나</h3>
+        <p>타고난 결을 <b>한 장으로 가볍게</b> 읽어드리고, 그래서 <b>이번 주말에 뭘 해보면 좋을지</b>까지 바로 이어집니다.<br>
+        <b>첫 메일에는 특별 초대가 함께 갑니다.</b> 6팀만요.</p>
       </li>
       <li>
-        <span class="when">첫 회차가 열리면</span>
-        <h3>우선 초대</h3>
-        <p>진짜 그 일을 하는 사람 앞에, <b>아이와 나란히 앉는 두 시간.</b> 맡기는 자리가 아닙니다 — 대신 뭘 할지는 저희가 다 정해둡니다. <b>6팀만 초대합니다.</b></p>
+        <span class="when">그다음부터 매주 금요일</span>
+        <h3>이번 주말 활동 제안</h3>
+        <p>기질은 자주 바뀌지 않으니 <b>리포트는 처음 한 번만</b>. 그다음부터는 <b>매주 활동 하나씩</b> 보내드려요.<br>
+        진짜 그 일을 하는 사람과 보내는 <b>한 시간 + 근처에서 이어갈 짧은 여정</b>으로 짜여 있습니다.</p>
       </li>
     </ol>
   </div>
@@ -141,11 +145,26 @@
         <input type="text" name="nickname" maxlength="10" placeholder="편지에 부를 이름이에요">
       </label>
 
-      <label class="check">
-        <input type="checkbox" name="consent" required>
-        <span>기질 리포트와 소식 메일 수신에 동의합니다 <em>필수</em></span>
-      </label>
-      <p class="tiny">언제든 수신거부하실 수 있고, 거부 링크는 모든 메일 하단에 있습니다.</p>
+      <div class="consents">
+        <label class="check">
+          <input type="checkbox" name="agreeTerms" required>
+          <span><em>필수</em> <a href="terms.html" target="_blank" rel="noopener">서비스 이용약관</a>에 동의합니다</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" name="agreePrivacy" required>
+          <span><em>필수</em> <a href="privacy.html" target="_blank" rel="noopener">개인정보 수집·이용</a>에 동의합니다<br>
+          <i>아이의 법정대리인(보호자)으로서 동의합니다. 이 동의로 기질 리포트를 보내드립니다.</i></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" name="agreeMarketing">
+          <span><i class="opt">선택</i> 광고성 정보 수신에 동의합니다<br>
+          <i>첫 회차 초대와 새 프로그램 소식을 보내드립니다. 안 하셔도 리포트는 받으실 수 있어요.</i></span>
+        </label>
+      </div>
+
+      <p class="tiny">언제든 수신거부하실 수 있고, 거부 방법은 모든 메일 하단에 있습니다.</p>
 
       <p class="err" id="err" hidden></p>
 
@@ -159,8 +178,13 @@
 <!-- ══════════════ 6. 각주 ══════════════ -->
 <footer>
   <div class="wrap narrow">
-    <p>사주 명리를 기반으로 AI가 해석합니다. <b>예언이 아니라 관찰의 출발점</b>으로 봐주세요.</p>
+    <p>사주 명리를 기반으로 AI가 해석합니다. <b>예언이나 진단이 아니라, 관찰의 출발점</b>으로 봐주세요.</p>
     <p class="dim">반짝이는 주말 · 1기 모집 2026.09.01 – 09.30 · 미취학(0~7세) 아이를 둔 부모</p>
+    <p class="legallinks">
+      <a href="privacy.html">개인정보 처리방침</a> ·
+      <a href="terms.html">이용약관</a>
+    </p>
+    <p class="dim">운영자 박진형 · 문의 [[문의 이메일]]</p>
   </div>
 </footer>
 
@@ -178,18 +202,49 @@
         <img src="focus.jpg" alt="크레용을 쥐고 그림에 몰입한 아이의 손" onerror="this.closest('figure').remove()">
       </figure>
 
-      <ol class="signals">
-        <li><b>불러도 대답을 안 한다</b><span>딴 데 안 보고 그것만 합니다. 이름을 불러도 못 들어요</span></li>
-        <li><b>몸에 힘이 들어가 있다</b><span>손끝, 어깨, 표정. 대충 하는 것과 확실히 다릅니다</span></li>
-        <li><b>자기 방식대로 바꿔본다</b><span>시킨 대로만 안 하고, 뒤집어보고 다르게 해봅니다</span></li>
-        <li><b>생각보다 오래 한다</b><span>"이제 그만하자" 했을 때 아쉬워합니다</span></li>
-      </ol>
+      <div class="siggroup">
+        <h4>몸이 먼저 말합니다</h4>
+        <ol class="signals">
+          <li><b>표정이 바뀐다</b><span>입이 살짝 벌어지거나, 미간에 힘이 들어갑니다. 웃는 것과는 다릅니다</span></li>
+          <li><b>몸이 앞으로 기운다</b><span>대상 쪽으로 상체가 쏠려요. 의자에 등을 안 붙입니다</span></li>
+          <li><b>손끝이 조심스러워진다</b><span>평소보다 천천히, 정확하게 움직입니다</span></li>
+          <li><b>에너지가 올라간다</b><span>목소리가 커지거나 동작이 빨라져요. 대충 하는 것과 확실히 다릅니다</span></li>
+        </ol>
+      </div>
 
-      <p class="verdict">넷 중 <b>셋 이상</b>이 보였다면, 거기서 반짝인 겁니다.</p>
+      <div class="siggroup">
+        <h4>시간이 말합니다</h4>
+        <ol class="signals" start="5">
+          <li><b>불러도 대답을 안 한다</b><span>딴 데 안 보고 그것만 합니다. 이름을 불러도 못 들어요</span></li>
+          <li><b>생각보다 오래 한다</b><span>"이제 그만하자" 했을 때 아쉬워합니다</span></li>
+          <li><b>끊겼다가 다시 돌아온다</b><span>화장실 다녀와서, 물 마시고 나서 그걸로 다시 갑니다</span></li>
+        </ol>
+      </div>
 
-      <p class="quiet"><b>조용히 몰입하는 아이도 있습니다.</b> 소리 지르고 뛰어야만 몰입이 아니에요. 가만히 오래 들여다보는 것도 몰입입니다. 그 아이는 1번과 4번이 세게 나옵니다.</p>
+      <div class="siggroup">
+        <h4>말과 손이 말합니다</h4>
+        <ol class="signals" start="8">
+          <li><b>자기 방식대로 바꿔본다</b><span>시킨 대로만 안 하고, 뒤집어보고 다르게 해봅니다</span></li>
+          <li><b>묻지 않았는데 설명한다</b><span>"이거 봐", "이거 왜 이래?" — 말이 먼저 나옵니다</span></li>
+        </ol>
+      </div>
 
-      <p class="src">벨기에 뢰번대 Ferre Laevers의 몰입 척도(Leuven Involvement Scale)를 부모용으로 옮긴 것입니다.</p>
+      <p class="verdict">세 묶음에서 <b>하나씩이라도</b> 나왔다면, 거기서 반짝인 겁니다.</p>
+
+      <p class="quiet"><b>조용히 몰입하는 아이도 있습니다.</b> 소리 지르고 뛰어야만 몰입이 아니에요. 그 아이는 <b>1·2·3번과 5·6번</b>이 세게 나오고, 4번과 9번은 거의 안 나옵니다. <b>없는 게 아니라 다른 자리에 있는 겁니다.</b></p>
+
+      <div class="siggroup after">
+        <h4>그리고 끝나고 나서</h4>
+        <ol class="signals plain">
+          <li><b>또 하고 싶다고 하나요?</b></li>
+          <li><b>아빠 도움 없이 혼자 집중한 시간이 있었나요?</b></li>
+          <li><b>집에 와서도 그 얘기나 놀이가 이어지나요?</b></li>
+          <li><b>결과물보다 과정에 더 관심을 보였나요?</b></li>
+        </ol>
+        <p class="afternote">현장의 몰입은 순간이지만, <b>이 넷은 며칠에 걸쳐 드러납니다.</b> 이게 진짜 신호예요.</p>
+      </div>
+
+      <p class="src">1~9번은 벨기에 뢰번대 Ferre Laevers의 몰입 척도(Leuven Involvement Scale)를 부모용으로 옮긴 것입니다. 마지막 네 가지는 활동 후 반응을 확인하는 항목입니다.</p>
     </div>
 
     <p class="center"><a class="btn ghost" href="./">처음으로</a></p>
