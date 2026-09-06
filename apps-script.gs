@@ -58,9 +58,20 @@ function doPost(e) {
   }
 }
 
-/** 배포가 살아 있는지 · 어느 버전이 올라가 있는지 브라우저로 확인용 */
+/**
+ * 배포가 살아 있는지 · 어느 버전이 올라가 있는지 브라우저로 확인용.
+ * 어느 시트에 붙어 있는지도 같이 알려준다 (시트를 다시 못 찾는 일이 없도록).
+ */
 function doGet() {
-  return json({ ok: true, msg: 'sparkle-weekend alive', version: VERSION });
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  return json({
+    ok: true,
+    msg: 'sparkle-weekend alive',
+    version: VERSION,
+    sheetName: ss.getName(),
+    sheetUrl: ss.getUrl(),
+    tabs: ss.getSheets().map(s => s.getName())
+  });
 }
 
 /**
