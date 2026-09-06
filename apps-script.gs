@@ -115,3 +115,9 @@ function appendByHeader(sheet, values) {
 
   sheet.appendRow(row);
 }
+
+function json(obj) {
+  return ContentService
+    .createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}
