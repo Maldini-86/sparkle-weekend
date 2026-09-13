@@ -10,6 +10,15 @@
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="legal.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QL9H60E562"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QL9H60E562');
+</script>
 </head>
 <body>
 
@@ -40,6 +49,7 @@
       <tr><td>필수</td><td>마케팅 정보 수신동의 여부와 일시</td><td>동의 사실의 기록·증빙</td><td>신청 폼 입력</td></tr>
       <tr><td>자동 수집</td><td>접속 IP, 접속 일시, 브라우저 정보</td><td>서비스 운영 및 장애 대응</td><td>서비스 이용 과정에서 자동 생성</td></tr>
       <tr><td>자동 수집</td><td>유입 경로 정보 (링크의 utm 값, 직전 방문 페이지 주소)</td><td>어느 안내 글을 보고 신청했는지 파악</td><td>신청 시 폼과 함께 전송</td></tr>
+      <tr><td>자동 수집</td><td>방문 기록 (페이지 조회, 스크롤, 본 섹션, 신청 완료 여부, 기기·브라우저 종류)</td><td>방문 통계 분석 · 페이지 개선</td><td>Google Analytics 쿠키 (10장 참조)</td></tr>
     </tbody>
   </table>
   </div>
@@ -98,7 +108,7 @@
     <thead><tr><th>수탁자</th><th>위탁 업무</th></tr></thead>
     <tbody>
       <tr><td>Vercel Inc.</td><td>웹사이트 호스팅</td></tr>
-      <tr><td>Google LLC</td><td>신청 데이터의 보관 및 처리 (Google Sheets, Apps Script)</td></tr>
+      <tr><td>Google LLC</td><td>신청 데이터의 보관 및 처리 (Google Sheets, Apps Script) · 방문 통계 분석 (Google Analytics)</td></tr>
     </tbody>
   </table>
   </div>
@@ -129,7 +139,7 @@
         <td>미국</td>
         <td><b>신청 시 입력한 모든 항목</b> (이메일 · 아동 생년월일 · 출생 시각 · 애칭 · 동의 여부 · 유입 경로)</td>
         <td>신청 시 네트워크를 통한 전송</td>
-        <td>신청 데이터의 보관 및 처리</td>
+        <td>신청 데이터의 보관 및 처리 · 방문 통계 분석 (Google Analytics — 신청서 입력 내용은 제외)</td>
         <td>위탁 계약 종료 시까지</td>
       </tr>
     </tbody>
@@ -174,8 +184,15 @@
 
   <h2>10. 자동 수집 장치(쿠키 등)</h2>
   <p>
-    <b>서비스는 쿠키를 사용하지 않습니다.</b>
-    광고·분석 목적의 추적 도구(Google Analytics, 광고 픽셀 등)도 설치하지 않았습니다.
+    서비스는 방문 통계를 보기 위해 <b>Google Analytics</b>를 사용하며, 이 과정에서 <b>쿠키</b>가 이용자 브라우저에 저장됩니다.
+    수집되는 것은 <b>페이지 조회 · 스크롤 · 어느 섹션까지 보았는지 · 신청 완료 여부 · 유입 경로 · 기기와 브라우저 종류</b>이며,
+    <b>이메일·아동 생년월일 등 신청서에 입력한 내용은 Google Analytics로 보내지 않습니다.</b>
+    광고 목적의 추적 도구(광고 픽셀 등)는 설치하지 않았습니다.
+  </p>
+  <p>
+    <b>쿠키 저장을 거부하는 방법</b> — 브라우저 설정에서 쿠키를 차단하거나,
+    Google이 제공하는 「Google 애널리틱스 차단 브라우저 부가기능」(tools.google.com/dlpage/gaoptout)을 설치하시면 됩니다.
+    쿠키를 거부해도 신청과 리포트 수신에는 아무 영향이 없습니다.
   </p>
   <p>
     다만 <b>어떤 경로(예: 인스타그램 게시물 링크)로 들어오셨는지</b>를 신청과 함께 기록하기 위해,

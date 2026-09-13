@@ -26,6 +26,34 @@ const 유입 = (function readUtm() {
   return out;
 })();
 
+/* ── GA 행동 기록 ──
+   어느 섹션까지 봤는지(section_view), 폼을 건드렸는지(form_start), 신청했는지(sign_up).
+   과제의 "어디서 멈췄나"를 숫자로 보기 위함. 입력값은 절대 보내지 않는다. */
+function ga() {
+  if (typeof gtag === 'function') gtag.apply(null, arguments);
+}
+
+(function trackSections() {
+  const names = ['1_hero', '2_gyeol', '3_story', '4_steps', '5_why_birth', '6_form'];
+  const secs = document.querySelectorAll('body > section');
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const i = [...secs].indexOf(en.target);
+      ga('event', 'section_view', { section: names[i] || `section_${i + 1}` });
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.35 });
+  secs.forEach(s => io.observe(s));
+})();
+
+(function trackFormStart() {
+  const f = document.getElementById('signupForm');
+  if (!f) return;
+  f.addEventListener('focusin', () => ga('event', 'form_start'), { once: true });
+})();
+
 /* ── 출생 시각 = 12지시 ──
    사주는 시(時)를 두 시간 단위 12지지로 봅니다.
    지지 이름만으로는 모르는 분이 많아 시간대를 같이 보여줍니다. */
@@ -161,6 +189,7 @@ function done(email) {
   document.getElementById('doneMail').textContent = email;
   document.getElementById('doneWhen').textContent = fmtDate(nextSendDate());
   document.getElementById('done').hidden = false;
+  ga('event', 'sign_up', { method: 'landing_form' });   /* 이메일 등 입력값은 보내지 않는다 */
   document.body.style.overflow = 'hidden';
   window.scrollTo(0, 0);
 }
