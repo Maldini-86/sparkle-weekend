@@ -6,7 +6,7 @@
  * 시트를 손으로 고칠 일은 없습니다.
  */
 
-const VERSION = '2026-09-06-consent3';
+const VERSION = '2026-09-13-utm';
 
 const SHEETS = {
   signup: {
@@ -14,6 +14,7 @@ const SHEETS = {
     headers: [
       '신청일시', '이메일', '생년월일', '출생시각', '애칭',
       '약관동의', '개인정보동의', '광고성동의',
+      '유입처', '유입매체', '캠페인', '콘텐츠', '리퍼러',
       '리포트초안', '검수', '발송일', '첫회차초대'
     ]
   },
@@ -39,7 +40,12 @@ function doPost(e) {
           '애칭':         data.nickname || '',
           '약관동의':     data.agreeTerms    ? 'Y' : 'N',
           '개인정보동의': data.agreePrivacy  ? 'Y' : 'N',
-          '광고성동의':   data.agreeMarketing ? 'Y' : 'N'
+          '광고성동의':   data.agreeMarketing ? 'Y' : 'N',
+          '유입처':       data.utm_source   || '',
+          '유입매체':     data.utm_medium   || '',
+          '캠페인':       data.utm_campaign || '',
+          '콘텐츠':       data.utm_content  || '',
+          '리퍼러':       data.referrer     || ''
         }
       : {
           '제출일시':   now,

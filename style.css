@@ -135,7 +135,7 @@ h3.hand { font-size: 30px; margin: 0 0 12px; }
   letter-spacing: 0.02em;
 }
 
-/* ══ 2. 여섯 결 ══ */
+/* ══ 2. 열 가지 결 ══ */
 .gyeol-band { padding: 64px 0 68px; }
 
 .gyeol-lead {
@@ -152,7 +152,7 @@ h3.hand { font-size: 30px; margin: 0 0 12px; }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 .gyeol li {
@@ -200,11 +200,11 @@ h3.hand { font-size: 30px; margin: 0 0 12px; }
 .gyeol-foot b { color: var(--ink); font-weight: 600; }
 
 @media (max-width: 700px) {
-  .gyeol { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .gyeol li { padding: 20px 12px 18px; }
-  .g-name { font-size: 25px; }
-  .g-kid { font-size: 12.5px; min-height: 3.6em; }
-  .g-who { font-size: 13.5px; padding-top: 10px; }
+  .gyeol { gap: 8px; }
+  .gyeol li { padding: 18px 10px 16px; gap: 5px; }
+  .g-name { font-size: 22px; }
+  .g-kid { font-size: 12px; min-height: 5.4em; }
+  .g-who { font-size: 12.5px; padding-top: 10px; }
 }
 
 /* ══ 3. 고백 ══ */

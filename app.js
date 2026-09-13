@@ -8,6 +8,24 @@
 
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzAyhaylNSLnfOXhyxMoMmaB8UGkap4Ak8HoBa8Fz7mFjdW4W9Mo-Y9VGIlP-ec9BGx/exec';
 
+/* ── 유입 경로 ──
+   인스타 등에 뿌린 링크의 ?utm_source=... 를 신청과 함께 시트에 남깁니다.
+   폼까지 스크롤하는 사이 주소가 바뀌어도 잃지 않게 처음 들어온 값을 기억해 둡니다. */
+const 유입 = (function readUtm() {
+  const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+  const q = new URLSearchParams(location.search);
+  let saved = {};
+  try { saved = JSON.parse(sessionStorage.getItem('sw_utm') || '{}'); } catch (e) {}
+
+  const fresh = {};
+  keys.forEach(k => { if (q.get(k)) fresh[k] = q.get(k).slice(0, 100); });
+
+  const out = Object.keys(fresh).length ? fresh : saved;
+  if (!out.referrer) out.referrer = (document.referrer || '').slice(0, 200);
+  try { sessionStorage.setItem('sw_utm', JSON.stringify(out)); } catch (e) {}
+  return out;
+})();
+
 /* ── 출생 시각 = 12지시 ──
    사주는 시(時)를 두 시간 단위 12지지로 봅니다.
    지지 이름만으로는 모르는 분이 많아 시간대를 같이 보여줍니다. */
@@ -30,7 +48,7 @@ const 지시 = [
 })();
 
 /* ── 발송일 계산 ──
-   매주 금요일 발송. 목요일 밤 12시까지 신청하면 이번 주말에 쓸 수 있다.
+   리포트는 한 번만, 금요일에 묶어서 발송. 목요일 밤 12시까지 신청하면 이번 주말에 쓸 수 있다.
    금·토·일에 신청하면 이번 주말은 이미 시작됐으므로 다음 주 금요일. */
 function nextSendDate() {
   const now = new Date();
@@ -113,7 +131,8 @@ form.addEventListener('submit', async (e) => {
     nickname: (fd.get('nickname') || '').trim(),
     agreeTerms: true,
     agreePrivacy: true,
-    agreeMarketing: agreeMarketing
+    agreeMarketing: agreeMarketing,
+    ...유입
   };
 
   try {
